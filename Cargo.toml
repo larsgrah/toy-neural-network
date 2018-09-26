@@ -1,0 +1,6 @@
+[package]
+name = "toy-network"
+version = "0.1.0"
+authors = ["lars <lars@kloud.software>"]
+
+[dependencies]
