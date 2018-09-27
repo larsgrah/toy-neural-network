@@ -5,4 +5,4 @@ authors = ["lars <lars@kloud.software>"]
 
 [dependencies]
 rand = "0.5.5"
-nalgebra = "0.16.4"
+ndarray = "0.12.0"
