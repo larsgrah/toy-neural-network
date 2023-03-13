@@ -17,11 +17,9 @@ fn main() {
 
     let unknown = array![1., 0., 0.];
 
-    neural_network.train(&inputs, &outputs, 10000);
+    neural_network.train(&inputs, &outputs, 1000000);
 
     print!("{}", neural_network.think_1_dim(&unknown));
-
-
 }
 
 struct NeuralNetwork {
@@ -30,13 +28,12 @@ struct NeuralNetwork {
 
 impl NeuralNetwork {
     pub fn new() -> NeuralNetwork {
-        let mut network = NeuralNetwork {weights: array![rand::random::<f64>(), rand::random::<f64>(), rand::random::<f64>()]};
-        network
+        NeuralNetwork {weights: array![rand::random::<f64>(), rand::random::<f64>(), rand::random::<f64>()]}
     }
 
     pub fn train(&mut self, training_set_inputs: &Array2<f64>, training_set_outputs: &Array1<f64>, iter: i32) {
-        for i in (1..iter) {
-            let output = &self.think(&training_set_inputs);
+        for _i in 1..iter {
+            let output = &self.think(training_set_inputs);
 
             let error = training_set_outputs - output;
 
@@ -65,5 +62,5 @@ fn derived_sigmoid(matrix: &Array1<f64>) -> Array1<f64> {
 }
 
 fn matrix_pow_e(matrix: &Array1<f64>) -> Array1<f64> {
-    matrix.map(|x| std::f64::consts::E.powf(-x))
+    matrix.map(|x| std::f64::consts::E.powf(-*x))
 }
